@@ -2,7 +2,6 @@ import { PrismaClient } from '@prisma/client';
 import express, { NextFunction, Request, Response } from 'express'
 import z from 'zod'
 import { authMiddleware } from '../middleware';
-import { AuthenticatedRequest } from '../middleware';
 
 const router=express.Router();
 
@@ -38,7 +37,7 @@ router.post("/create",async (req,res)=>{
     })
 })
 
-router.get("/get",authMiddleware,async(req:AuthenticatedRequest,res:Response)=>{
+router.get("/get",authMiddleware,async(req:Request|any,res:Response)=>{
     const userId=req.userId;
     try{
     const userExpenses=await client.expense.findMany({
@@ -61,4 +60,6 @@ catch(err){
 
 
 })
+
+export default router;
 

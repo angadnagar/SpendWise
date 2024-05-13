@@ -4,11 +4,8 @@ import { JWT_SECRET } from './config'
 import { Request,Response,NextFunction } from 'express'
 
 
-export interface AuthenticatedRequest extends Request {
-    userId: number; // Define the userId property as optional
-}
 
-export const authMiddleware=(req:AuthenticatedRequest,res:Response,next:NextFunction) =>{
+export const authMiddleware=(req:Request|any,res:Response,next:NextFunction) =>{
       const authHeader=req.headers.authorization;
 
       if(!authHeader || !authHeader.startsWith('Bearer')){
