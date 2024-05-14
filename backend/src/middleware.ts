@@ -8,7 +8,7 @@ import { Request,Response,NextFunction } from 'express'
 export const authMiddleware=(req:Request|any,res:Response,next:NextFunction) =>{
       const authHeader=req.headers.authorization;
 
-      if(!authHeader || !authHeader.startsWith('Bearer')){
+      if(!authHeader || !authHeader.startsWith('Bearer ')){
          res.status(403).json({
             message:"Authheader does not exist"
         })
@@ -22,7 +22,7 @@ export const authMiddleware=(req:Request|any,res:Response,next:NextFunction) =>{
         const decoded=jwt.verify(token,JWT_SECRET) as JwtPayload;
 
         if(decoded.userId){
-            req.userId=decoded.userId
+            req.userId=decoded.id
             next();
         }
 

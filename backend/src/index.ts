@@ -3,6 +3,8 @@ import mainRouter from './routes/main'
 
 const app=express();
 
+app.use(express.json());
+
 app.use('/main',mainRouter);
 app.listen(3000,()=>{
     console.log("server is started")
