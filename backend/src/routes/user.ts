@@ -1,6 +1,10 @@
 import express from 'express'
 import { PrismaClient } from '@prisma/client';
 import z from 'zod'
+import jwt from 'jsonwebtoken'
+import { JWT_SECRET } from '../config';
+
+
 
 const client=new PrismaClient();
 
@@ -23,6 +27,7 @@ router.post('/signup',async (req,res)=>{
     const {success}=signupSchema.safeParse(body);
 
     if(!success){
+        console.log(success);
         return res.status(411).json({
             message:"Wrong inputs"
         })
@@ -48,7 +53,11 @@ router.post('/signup',async (req,res)=>{
         }
     })
 
-    return res.json("User Created Successfully");
+    const token = jwt.sign({ userId: newUser.id }, JWT_SECRET);
+
+    return res.json({
+        token:token
+    });
 
 })
 
@@ -76,8 +85,12 @@ router.post("/signin",async (req,res)=>{
         })
     }
 
+    const token = jwt.sign({ userId: user.id }, JWT_SECRET);
+    
+    //added token for verification of user by accessing token
     return res.json({
-        message:"user logged in"
+        message:"user logged in",
+        token:token
     })
 
 })
