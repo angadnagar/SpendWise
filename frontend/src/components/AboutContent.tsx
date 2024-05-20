@@ -1,4 +1,40 @@
+import { FormEvent, useState } from "react";
+
 export const AboutContent = () => {
+  const [email,setEmail]=useState('')
+  const[loading,setLoading]=useState(false)
+  const [success,setSuccess]=useState(false)
+  const [error,setError]=useState('')
+
+  const handleSubmit=async(e:FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+    setLoading(true);
+    setError('')
+
+    try{
+      const response=await fetch('https://formspree.io/f/xgegbeag',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify({email})
+      })
+
+      if(response.ok){
+        setSuccess(true)
+        setEmail('')
+      }
+      else{
+        setError('Something went wrong. Please try again later.')
+      }
+    }
+
+    catch(error){
+      setError('Something went wrong. Please try again later.')
+    }
+
+    setLoading(false);
+  }
   return (
     <div className="bg-gradient-to-r from-gray-200 to-gray-400">
       <div className="max-w-xl mx-auto p-10">
@@ -66,6 +102,32 @@ export const AboutContent = () => {
           </div>
         </div>
       </div>
+
+      <h2 className="flex flex-col text-center text-3xl font-semibold font-serif mt-8 mb-8 gap-2">Subscribe to Our Newsletter <span className="text-green-700">and Get Monthly Money tips. </span></h2>
+
+      <form onSubmit={handleSubmit} className="flex justify-center pb-4">
+        <div className="flex flex-col sm:flex-row gap-2">
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Your Email Address"
+            className="px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-gray-400"
+            required
+          />
+          <button
+            type="submit"
+            className="px-4 py-2 bg-black text-white font-medium rounded-full transition duration-300 focus:outline-none"
+            disabled={loading}
+          >
+            {loading ? 'Submitting...' : 'Subscribe'}
+          </button>
+        </div>
+      </form>
+
+      {success && <p className="flex justify-center text-green-600">Thank you for subscribing!</p>}
+      {error && <p className="flex justify-center text-red-600">{error}</p>}
     </div>
   );
 };
