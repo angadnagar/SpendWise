@@ -13,7 +13,7 @@ export const Features=()=>{
             <FeatureCard
               title="Track Expenses"
               description="Monitor your spending and track your expenses easily."
-              icon={<FaChartLine />}
+              icon={<FaChartLine  className="text-green-500"/>}
               aosAnimation="fade-up"
               aosDelay={1200}
             />
@@ -25,7 +25,7 @@ export const Features=()=>{
           <FeatureCard
             title="Manage Budget"
             description="Set budgets and manage your finances effectively."
-            icon={<FaDollarSign />}
+            icon={<FaDollarSign className="text-amber-400" />}
             aosAnimation="fade-up"
             aosDelay={1300}
           />
@@ -35,7 +35,7 @@ export const Features=()=>{
           <FeatureCard
             title="Secure Data"
             description="Your data is safe and secure with our advanced encryption."
-            icon={<FaShieldAlt />}
+            icon={<FaShieldAlt className="text-blue-500" />}
             aosAnimation="fade-up"
             aosDelay={1400}
           />
@@ -45,7 +45,7 @@ export const Features=()=>{
            <FeatureCard
             title="Mobile Friendly"
             description="Access your financial data on the go with our mobile-friendly design."
-            icon={<FaMobileAlt />}
+            icon={<FaMobileAlt className="text-amber-700" />}
             aosAnimation="fade-up"
             aosDelay={1500} // Delay in milliseconds
           />
@@ -56,7 +56,7 @@ export const Features=()=>{
           <FeatureCard
             title="Automatic Sync"
             description="Keep your data in sync across all your devices effortlessly."
-            icon={<FaSyncAlt />}
+            icon={<FaSyncAlt className="text-pink-500" />}
             aosAnimation="fade-up"
             aosDelay={1600} // Delay in milliseconds
           />
@@ -67,7 +67,7 @@ export const Features=()=>{
           <FeatureCard
             title="Alerts & Notifications"
             description="Get timely alerts and notifications to stay on top of your finances."
-            icon={<FaBell />}
+            icon={<FaBell className="text-red-500" />}
             aosAnimation="fade-up"
             aosDelay={1700} // Delay in milliseconds
           />

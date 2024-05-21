@@ -16,6 +16,13 @@ export const Navbar = () => {
           <div className="hidden sm:block sm:ml-6">
             <div className="flex space-x-4">
               <Link
+                to="/"
+                className="text-white hover:font-bold hover:text-green-300 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Home
+              </Link>
+
+              <Link
                 to="/dashboard"
                 className="text-white hover:font-bold hover:text-green-300 px-3 py-2 rounded-md text-sm font-medium"
               >
@@ -23,17 +30,10 @@ export const Navbar = () => {
               </Link>
 
               <Link
-                to="/"
+                to="/pricing"
                 className="text-white hover:font-bold hover:text-green-300 px-3 py-2 rounded-md text-sm font-medium"
               >
                 Pricing
-              </Link>
-
-              <Link
-                to="/"
-                className="text-white hover:font-bold hover:text-green-300 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Help
               </Link>
 
               <Link
