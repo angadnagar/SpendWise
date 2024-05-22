@@ -9,6 +9,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { About } from "./pages/About"
 import { Pricing } from "./pages/Pricing"
+import { Dashboard } from "./pages/Dashboard"
 
 export const App=()=>{
 
@@ -28,6 +29,7 @@ export const App=()=>{
           <Route path="/signin" element={<Signin/>}/>
           <Route path="/about" element={<About/>}/>
           <Route path="/pricing" element={<Pricing/>}/>
+          <Route path="/dashboard" element={<Dashboard/>}/>
         </Routes>
         </BrowserRouter>
         
